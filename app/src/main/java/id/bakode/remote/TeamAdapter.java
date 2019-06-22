@@ -62,12 +62,7 @@ public class TeamAdapter extends
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(holder.mTeamLogo);
         holder.mTeamName.setText(mTeams.get(position).getName());
-        holder.mTeamContainer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.onTeamClicked(mTeams.get(position));
-            }
-        });
+        holder.mTeamContainer.setOnClickListener(v -> mListener.onTeamClicked(mTeams.get(position)));
     }
 
     @Override
