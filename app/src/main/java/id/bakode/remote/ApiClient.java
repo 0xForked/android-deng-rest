@@ -5,6 +5,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static id.bakode.remote.ApiConstant.API_URL;
+
 /**
  * Created by A. A. Sumitro on 6/21/2019
  * aasumitro@merahputih.id
@@ -12,9 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 class ApiClient {
 
-    private final static String API_URL = "https://api.opendota.com/api/";
-
-    private OkHttpClient provideOkHttpClient() {
+     private OkHttpClient provideOkHttpClient() {
         return new OkHttpClient.Builder()
                 .addInterceptor(new HttpLoggingInterceptor()
                         .setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -29,7 +29,7 @@ class ApiClient {
                 .build();
     }
 
-    ApiService ApiServices() {
+    ApiService apiServices() {
         return provideRetrofit()
                 .create(ApiService.class);
     }

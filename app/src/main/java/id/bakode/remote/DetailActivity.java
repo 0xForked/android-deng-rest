@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.Objects;
 
 public class DetailActivity extends AppCompatActivity {
+
     public static final String EXTRA_TEAM = "extra_team";
 
     private Team mTeam;

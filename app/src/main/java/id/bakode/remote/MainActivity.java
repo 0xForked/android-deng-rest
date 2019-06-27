@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,12 +22,11 @@ import retrofit2.Response;
 import static id.bakode.remote.DetailActivity.EXTRA_TEAM;
 
 public class MainActivity extends
-        AppCompatActivity implements TeamAdapter.TeamListener {
+        AppCompatActivity implements TeamListener {
 
     private ApiClient mApiClient;
     private RecyclerView mRecyclerView;
     private ProgressBar mProgressbar;
-    private ConstraintLayout mContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +38,14 @@ public class MainActivity extends
     }
 
     private void initView() {
-        mContainer = findViewById(R.id.main_container);
         mRecyclerView = findViewById(R.id.recycler_view_team);
         mProgressbar = findViewById(R.id.progress_dialog);
     }
 
-
     private void getData() {
         mProgressbar.setVisibility(View.VISIBLE);
         mApiClient
-                .ApiServices()
+                .apiServices()
                 .getData()
                 .enqueue(new Callback<List<Team>>() {
                     @Override
